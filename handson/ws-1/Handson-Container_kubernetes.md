@@ -257,7 +257,7 @@
 ## サンプルアプリケーションのKubernetesへのデプロイ
 
 イメージレジストリへプッシュしたコンテナイメージを使用してKubernetesにデプロイを行います。
-本ハンズオンでは、ManifestファイルでKubernetesリソースを定義して`kubectlコマンドでデプロイします。
+本ハンズオンでは、ManifestファイルでKubernetesリソースを定義して`kubectl`コマンドでデプロイします。
 
 以下の手順は、`spring-petclinic`ディレクトリで実施します。
 
@@ -266,7 +266,7 @@
    `kubectl`コマンドでKubernetesクラスタへアクセスできることを確認します。
 
    ```shell
-   kubectl config get-context
+   kubectl config get-contexts
    ```
 
 2. Manifestファイル（Deployment）の作成
