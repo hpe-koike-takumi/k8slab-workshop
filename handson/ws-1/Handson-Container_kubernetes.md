@@ -97,6 +97,11 @@
    java -jar target/*.jar --server.port=18818
    ```
 
+   サンプルアプリケーション起動後、ブラウザでアクセス確認することも可能です。
+   ```
+   http://[bastion-ip]:188[user_postfix]
+   ```
+   踏み台サーバのIPアドレスはトレーニング中にお伝えします。
    起動確認後、Ctrl+Cで停止します。
 
 ## サンプルアプリケーションコンテナイメージのビルド
@@ -155,9 +160,9 @@
    STEP 4/5: WORKDIR /app
    --> 0b3612206ce
    STEP 5/5: CMD java -jar spring-petclinic-3.0.0-SNAPSHOT.jar
-   COMMIT tk6117/sample-petclinic:v0.1
+   COMMIT [Your DockerHub ID]/sample-petclinic:v0.1
    --> e257189eea3
-   Successfully tagged localhost/tk6117/sample-petclinic:v0.1
+   Successfully tagged localhost/[Your DockerHub ID]/sample-petclinic:v0.1
    e257189eea3318c0020948c220741eb3763d2a957b3bc0af2762507e7fa711e7
    ```
    
@@ -173,20 +178,20 @@
    
    ```shell
    REPOSITORY                         TAG         IMAGE ID      CREATED         SIZE
-   localhost/tk6117/sample-petclinic  v0.1        e257189eea33  46 seconds ago  535 MB
+   localhost/[Your DockerHub ID]/sample-petclinic  v0.1        e257189eea33  46 seconds ago  535 MB
    docker.io/library/openjdk          17          5e28ba2b4cdb  8 months ago    475 MB
    ```
    
    ビルドしたコンテナイメージからコンテナを作成します。
    
    ```shell
-   podman container run -itd --name sample-petclinic -p 188[user_postfix]:8080 tk6117/sample-petclinic:v0.1
+   podman container run -itd --name sample-petclinic -p 188[user_postfix]:8080 [Your DockerHub ID]/sample-petclinic:v0.1
    ```
    同一サーバ上で起動するので、ポート番号の重複を避けるため、参加者各自で異なるポート番号を指定します。
    
    （例）user18の場合
    ```shell
-   podman container run -itd --name sample-petclinic -p 18818:8080 tk6117/sample-petclinic:v0.1
+   podman container run -itd --name sample-petclinic -p 18818:8080 [Your DockerHub ID]/sample-petclinic:v0.1
    ```
 
    作業用マシンのポート18818に転送したパケットをコンテナのポート8080に転送します。
@@ -200,7 +205,7 @@
    
    ```shell
    CONTAINER ID  IMAGE                                   COMMAND               CREATED        STATUS            PORTS                    NAMES
-   bda161e93fb1  localhost/tk6117/sample-petclinic:v0.1  /bin/sh -c java -...  4 seconds ago  Up 4 seconds ago  0.0.0.0:18801->8080/tcp  sample-petclinic
+   bda161e93fb1  localhost/[Your DockerHub ID]/sample-petclinic:v0.1  /bin/sh -c java -...  4 seconds ago  Up 4 seconds ago  0.0.0.0:18801->8080/tcp  sample-petclinic
    ```
    
    ブラウザよりアクセスします。（IPアドレスはトレーニング中にお伝えします。）
@@ -235,7 +240,7 @@
    ビルドしたコンテナイメージをプッシュして、Docker Hubイメージレジストリに格納します。
 
    ```shell
-   podman image push tk6117/sample-petclinic:v0.1
+   podman image push [Your DockerHub ID]/sample-petclinic:v0.1
    ```
 
    実行結果
@@ -587,7 +592,7 @@ Podの数を手動で変更してスケーリングを確認します。
            - containerPort: 8080
    ```
 
-2. 変更後、`oc apply`コマンドを実行し、変更を適用します。
+2. 変更後、`kubectl apply`コマンドを実行し、変更を適用します。
 
    ```shell
    kubectl apply -f sample-petclinic-deployment.yaml
