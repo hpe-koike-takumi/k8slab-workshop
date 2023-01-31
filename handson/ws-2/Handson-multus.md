@@ -106,7 +106,7 @@ Multus CNI は、複数のCNIを呼び出すメタCNIです。
    ```shell
    kubectl get pods
    NAME                                        READY   STATUS    RESTARTS        AGE
-   sample-client-not-nad-6ff4554cc4-ggjwh      1/1     Running   2 (4h46m ago)   43h
+   sample-client-not-nad-6ff4554cc4-ggjwh      1/1     Running   2 (4h46m ago)   43h`
    ```
 
 3. 閉域データベースへのアクセス確認
@@ -117,13 +117,37 @@ Multus CNI は、複数のCNIを呼び出すメタCNIです。
    kubectl exec -it [sample-client-not-nad pod名] -- /bin/sh
    ```
 
-   クライアントPodへアクセス後、`psql`コマンドで接続します。
+   `ip`コマンドでPodにアタッチしているnicを確認します。Multusを使用していないので、1つのnicのみです。
+
+   ```shell
+   / # ip a
+   1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN qlen 1000
+       link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+       inet 127.0.0.1/8 scope host lo
+          valid_lft forever preferred_lft forever
+       inet6 ::1/128 scope host
+          valid_lft forever preferred_lft forever
+   3: eth0@if36: <BROADCAST,MULTICAST,UP,LOWER_UP,M-DOWN> mtu 9001 qdisc noqueue state UP
+       link/ether d6:7c:fe:3f:b9:0f brd ff:ff:ff:ff:ff:ff
+       inet 172.20.212.37/32 scope global eth0
+          valid_lft forever preferred_lft forever
+       inet6 fe80::d47c:feff:fe3f:b90f/64 scope link
+          valid_lft forever preferred_lft forever
+   ```
+
+   ipコマンド確認後、`psql`コマンドで接続します。(`192.168.100.235`は本環境のdbインスタンスのIPアドレスです)
 
    ```shell
    psql -U admin -h 192.168.100.235 -p 5432 -d db
    ```
 
    パスワード入力プロンプトが表示されず接続できないことを確認します。ctrl + c でプロンプトに戻ります。
+
+   Podからの踏み台サーバのシェルに戻ります。
+
+   ```shell
+   / # exit
+   ```
 
 ### `NetworkAttachmentDefinition`の作成
 
@@ -248,7 +272,31 @@ vnicを追加したPodを作成するために、Podのannotationsで`NetworkAtt
    kubectl exec -it [sample-client-hostlocal pod名] -- /bin/sh
    ```
 
-   クライアントPodへアクセス後、`psql`コマンドで接続します。
+   `ip`コマンドでPodにアタッチしているnicを確認します。MultusによりPodに2つ目のvnicが追加されていることを確認します。
+
+   ```shell
+   / # ip a
+   1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN qlen 1000
+       link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+       inet 127.0.0.1/8 scope host lo
+          valid_lft forever preferred_lft forever
+       inet6 ::1/128 scope host
+          valid_lft forever preferred_lft forever
+   3: eth0@if37: <BROADCAST,MULTICAST,UP,LOWER_UP,M-DOWN> mtu 9001 qdisc noqueue state UP
+       link/ether ca:12:a6:b8:49:2f brd ff:ff:ff:ff:ff:ff
+       inet 172.20.212.36/32 scope global eth0
+          valid_lft forever preferred_lft forever
+       inet6 fe80::c812:a6ff:feb8:492f/64 scope link
+          valid_lft forever preferred_lft forever
+   4: net1@eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 9001 qdisc noqueue state UNKNOWN
+       link/ether 0e:77:99:0e:40:0e brd ff:ff:ff:ff:ff:ff
+       inet 192.168.100.37/24 brd 192.168.100.255 scope global net1
+          valid_lft forever preferred_lft forever
+       inet6 fe80::e77:9900:30e:400e/64 scope link
+          valid_lft forever preferred_lft forever
+   ```
+
+   ipコマンド確認後、`psql`コマンドで接続します。(`192.168.100.235`は本環境のdbインスタンスのIPアドレスです)
 
    ```shell
    psql -U admin -h 192.168.100.235 -p 5432 -d db
@@ -264,6 +312,18 @@ vnicを追加したPodを作成するために、Podのannotationsで`NetworkAtt
 
    ```sql
    select * from users;
+   ```
+
+   クエリ実行結果確認後、データベースから戻ります。
+
+   ```shell
+   db=# exit
+   ```
+
+   Podからの踏み台サーバのシェルに戻ります。
+
+   ```shell
+   / # exit
    ```
 
 4. 最後にリソース削除します。
