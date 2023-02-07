@@ -195,6 +195,8 @@ DockerHubへプッシュしたコンテナイメージを使用してKubernetes�
 ### HorizontalPodAutoscaler作成
 
 1. マニフェストを作成します。
+   
+   `php-hpa.yaml`
 
    ```yaml
    apiVersion: autoscaling/v2
