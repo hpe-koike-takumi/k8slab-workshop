@@ -223,7 +223,7 @@ DockerHubへプッシュしたコンテナイメージを使用してKubernetes�
    
 2. HPA作成
 
-   ```yaml
+   ```shell
    kubectl apply -f php-apache-hpa.yaml
    ```
 
