@@ -46,7 +46,7 @@ HPAがスケールアウト・インを判断する際のメトリクス
 
 ## ハンズオン手順
 
-### bastionサーバログイン
+### 1. bastionサーバログイン
 
 1. bastionサーバへログインし、ユーザなどを確認します。
 
@@ -62,7 +62,7 @@ HPAがスケールアウト・インを判断する際のメトリクス
    cd ws-3
    ```
 
-### サンプルアプリケーションビルド・プッシュ
+### 2. サンプルアプリケーションビルド・プッシュ
 
 1. サンプルアプリケーションとして以下の`index.php`を作成します。
 
@@ -129,7 +129,7 @@ HPAがスケールアウト・インを判断する際のメトリクス
 
    **[Your Dockerhub ID]は作成いただいたご自身のDockerHubアカウントに置き換えてください。**
 
-### サンプルアプリケーションデプロイ
+### 3. サンプルアプリケーションデプロイ
 
 DockerHubへプッシュしたコンテナイメージを使用してKubernetesクラスタへデプロイします。
 
@@ -192,7 +192,7 @@ DockerHubへプッシュしたコンテナイメージを使用してKubernetes�
    kubectl get deployment,service
    ```
 
-### HorizontalPodAutoscaler作成
+### 4. HorizontalPodAutoscaler作成
 
 1. マニフェストを作成します。
    
@@ -249,7 +249,7 @@ DockerHubへプッシュしたコンテナイメージを使用してKubernetes�
    kubectl autoscale deployment php-apache --cpu-percent=50 --min=1 --max=10
    ```
 
-### 負荷掛け
+### 5. 負荷掛け
 
 1. 以下のコマンドでサンプルアプリケーションに負荷をかけます
 
