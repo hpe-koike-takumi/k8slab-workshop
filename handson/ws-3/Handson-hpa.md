@@ -285,9 +285,10 @@ DockerHubへプッシュしたコンテナイメージを使用してKubernetes�
    kubectrl get deployment,pod
    ```
    
-   最後にサンプルアプリケーションを削除します。
+   最後にHPAとサンプルアプリケーションを削除します。
    
    ```shell
+   kubectl delete -f php-apache-hpa.yaml
    kubectl delete -f php-apache.yaml
    ```
 
