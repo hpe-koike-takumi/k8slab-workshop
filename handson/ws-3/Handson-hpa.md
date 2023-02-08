@@ -135,7 +135,7 @@ DockerHubへプッシュしたコンテナイメージを使用してKubernetes�
 
 1. マニフェストファイル作成
 
-   `php-apache-hpa.yaml`
+   `php-apache.yaml`
 
    ```yaml
    apiVersion: apps/v1
@@ -196,7 +196,7 @@ DockerHubへプッシュしたコンテナイメージを使用してKubernetes�
 
 1. マニフェストを作成します。
    
-   `php-hpa.yaml`
+   `php-apache-hpa.yaml`
 
    ```yaml
    apiVersion: autoscaling/v2
