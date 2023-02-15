@@ -311,6 +311,7 @@ JMX Exporterを作業ディレクトリにダウンロードして、Exporterや
    ```shell
    java -javaagent:./jmx_prometheus_javaagent-0.17.2.jar=19418:config.yaml -jar target/*.jar --server.port=18818 &
    ```
+   コンソールに標準出力への出力が流れるので、しばらくしてからEnterを押してプロンプトに戻ります。
 
    ホスト名:194[user_postfix]/metricsにアクセスすると、取得可能なメトリクスを確認可能です
 
@@ -387,6 +388,21 @@ JMX Exporterを作業ディレクトリにダウンロードして、Exporterや
    ```
    
    確認後、サンプルアプリケーションのPIDを確認し、killコマンドで停止します。
+   
+   `ps`コマンドを実行し、CMD列がjavaのPIDをメモします。（下記実行例の場合、「8165」）
+   ```shell
+   ps
+    PID TTY          TIME CMD
+   7971 pts/1    00:00:00 bash
+   8165 pts/1    00:00:25 java
+   8222 pts/1    00:00:00 ps
+   ```
+   
+   `kill`コマンドで上記プロセスを停止します。（下記実行例の場合、PID「8165」のプロセスを停止します）
+   ```shell
+   kill 8165
+   ```
+   Enterを押してプロンプトへ戻ります。
    
 3. Dockerfile作成
 
