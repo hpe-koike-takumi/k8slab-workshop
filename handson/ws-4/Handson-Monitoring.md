@@ -412,7 +412,7 @@ JMX Exporterを作業ディレクトリにダウンロードして、Exporterや
    ```
 
    ```shell
-   podman image puth [Your DockerHub ID]/monitoring-sample-petclinic:v0.1
+   podman image push [Your DockerHub ID]/monitoring-sample-petclinic:v0.1
    ```
 
    **`[Your Dockerhub ID]`は作成いただいたDocker HubアカウントIDを入力ください。**
