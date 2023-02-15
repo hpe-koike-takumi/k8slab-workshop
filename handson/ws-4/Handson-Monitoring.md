@@ -410,7 +410,11 @@ JMX Exporterを作業ディレクトリにダウンロードして、Exporterや
    ```shell
    podman image build -t [Your Dockerhub ID]/monitoring-sample-petclinic:v0.1 -f Dockerfile-monitoring .
    ```
-
+   
+   ```shell
+   podman login docker.io
+   ```
+   
    ```shell
    podman image push [Your DockerHub ID]/monitoring-sample-petclinic:v0.1
    ```
