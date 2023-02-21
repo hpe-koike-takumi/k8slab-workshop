@@ -6,14 +6,14 @@
 
 本ハンズオンは大きく分けて、Tekton PipelineによるCIとArgoCDによるCDの2つのハンズオンから構成されます。
 
-ハンズオンで構成するパイプラインの想定シナリオ
+ハンズオン内容
 
-- 環境区分は、開発・本番
-- 開発者
+- ハンズオン①
   - ソースコードを書いてリポジトリにコミットすると、パイプラインが実行されてKubernetesクラスタへデプロイしブラウザでアクセス確認を行う。
   - ソースコードを修正してコミットするたびにユニットテスト・イメージビルド・動作確認を繰り返すことで早期に修正点を発見・修正
-- 運用者
-  - パイプラインでビルドされたコンテナイメージタグをマニフェストファイルに差し替えてプッシュ → ArgoCDにより同期
+- ハンズオン②
+  - パイプラインでビルドされたコンテナイメージURLをマニフェストファイルに差し替えてプッシュするとArgoCDにより自動同期されてクラスタに展開
+  - マニフェストリポジトリの内容変更時にArgoCDの自動同期により即座にクラスタ上の状態が変更される
 
 ## Tekton
 
@@ -413,6 +413,14 @@ AppProjectでは主に以下のことを制限できます。
 本ハンズオンでは、はじめにTekton Pipelineを利用してサンプルアプリケーションをビルド・デプロイするパイプラインを構成します。その後、Tekton Triggersを利用して、Gitリポジトリの変更をトリガーとしたパイプラインの自動実行を構成します。
 
 <img src="assets/image-20220118162436629.png" alt="image-20220118162436629" style="zoom:200%;" />
+
+詳細①　手動Pipeline実行
+
+<img src="assets/handson-detail1.png" alt="handson-detail1" style="zoom:200%;" />
+
+詳細②　Triggerによる自動Pipeline実行
+
+<img src="assets/handson-detail2.png" alt="handson-detail2" style="zoom:200%;" />
 
 1. bastionサーバログイン
 2. サンプルアプリケーションのフォーク
@@ -1683,6 +1691,10 @@ Github上でPushイベントが発生すると、Kubernetesクラスタに用意
 4. マニフェストファイルの更新
 
 <img src="assets/image-20220118172022948.png" alt="image-20220118172022948" style="zoom:200%;" />
+
+詳細
+
+<img src="assets/handson-detail3.png" alt="handson-detail3" style="zoom:200%;" />
 
 開発者が開発環境で繰り返しビルド・テストを行ったコンテナイメージを、運用者がArgoCDにより本番環境へデプロイするイメージです。
 
