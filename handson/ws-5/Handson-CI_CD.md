@@ -583,7 +583,7 @@ AppProjectでは主に以下のことを制限できます。
      name: tekton-petclinic-ingress
    spec:
      rules:
-     - host: [Your User Name]-tekton-petclinic.ext01.k8slabhpe.net
+     - host: [Your User Name]-tekton-petclinic.test.k8slabhpe.net
        http:
          paths:
          - path: /
@@ -611,7 +611,7 @@ AppProjectでは主に以下のことを制限できます。
        name: tekton-petclinic-ingress
      spec:
        rules:
-       - host: user18-tekton-petclinic.ext01.k8slabhpe.net
+       - host: user18-tekton-petclinic.test.k8slabhpe.net
          http:
            paths:
      ```
@@ -1561,7 +1561,7 @@ Github上でPushイベントが発生すると、Kubernetesクラスタに用意
    spec:
      ingressClassName: nginx
      rules:
-     - host: [Your User Name]-el-petclinic-hook.ext01.k8slabhpe.net
+     - host: [Your User Name]-el-petclinic-hook.test.k8slabhpe.net
        http:
          paths:
          - backend:
@@ -1585,7 +1585,7 @@ Github上でPushイベントが発生すると、Kubernetesクラスタに用意
      spec:
        ingressClassName: nginx
        rules:
-       - host: user18-el-petclinic-hook.ext01.k8slabhpe.net
+       - host: user18-el-petclinic-hook.test.k8slabhpe.net
          http:
      ```
 
@@ -1621,7 +1621,7 @@ Github上でPushイベントが発生すると、Kubernetesクラスタに用意
 
    - Payload URL：作成した`Ingress`リソースのHOST列の値に、「http://」を先頭につけたURL
 
-     （例）user18の場合：http://user18-el-petclinic-hook.ext01.k8slabhpe.net
+     （例）user18の場合：http://user18-el-petclinic-hook.test.k8slabhpe.net
 
    - Content type： application/json を選択します
 
@@ -1826,7 +1826,7 @@ Github上でPushイベントが発生すると、Kubernetesクラスタに用意
      name: prod-tekton-petclinic-ingress
    spec:
      rules:
-     - host: [Your User Name]-prod-tekton-petclinic.ext01.k8slabhpe.net
+     - host: [Your User Name]-prod-tekton-petclinic.test.k8slabhpe.net
        http:
          paths:
          - path: /
@@ -1867,7 +1867,7 @@ Github上でPushイベントが発生すると、Kubernetesクラスタに用意
        name: tekton-petclinic-ingress
      spec:
        rules:
-       - host: user18-prod-tekton-petclinic.ext01.k8slabhpe.net
+       - host: user18-prod-tekton-petclinic.test.k8slabhpe.net
          http:
            paths:
      ```
