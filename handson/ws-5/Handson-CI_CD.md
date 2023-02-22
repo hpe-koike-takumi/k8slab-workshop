@@ -841,7 +841,7 @@ PVのバックエンドストレージはbastionサーバのNFS領域です。
 
    TektonHubに用意されているTaskを使用します。
 
-   TektonHub（https://hub.tekton.dev/）にアクセスし、画面右上の「Search for resources..」に「git-clone」と入力しEnterを押します。
+   TektonHub（ https://hub.tekton.dev/ ）にアクセスし、画面右上の「Search for resources..」に「git-clone」と入力しEnterを押します。
 
    ![tektonhub-gitclone1](assets/tektonhub-gitclone1.png)
 
