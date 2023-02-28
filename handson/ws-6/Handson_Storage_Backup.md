@@ -505,7 +505,7 @@ https://github.com/vmware-tanzu/velero
 
    ```shell
    ls -l /var/log/nginx/
-   cat /vat/log/nginx/test.log
+   cat /var/log/nginx/test.log
    ```
 
    実行例
