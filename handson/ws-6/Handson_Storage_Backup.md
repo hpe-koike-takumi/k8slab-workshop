@@ -1042,6 +1042,8 @@ Veleroで取得したバックアップデータの保存先オブジェクト�
    ```shell
    velero restore delete [Your User Name]-restore-with-pv
    velero backup delete -l user=[Your User Name]
+   
+   # 「velero backup delete -l user=[Your User Name]」でバックアップリソースが削除されない場合は以下のコマンドを実行
    kubectl -n velero delete backup [Your User Name]-backup-with-pv [Your User Name]-backup-without-pv
    ```
 
@@ -1054,6 +1056,8 @@ Veleroで取得したバックアップデータの保存先オブジェクト�
      ```shell
      velero restore delete user20-restore-with-pv
      velero backup delete -l user=user20
+     
+     # 「velero backup delete -l user=user20」でバックアップリソースが削除されない場合は以下のコマンドを実行
      kubectl -n velero delete backup user20-backup-with-pv user20-backup-without-pv
      ```
 
