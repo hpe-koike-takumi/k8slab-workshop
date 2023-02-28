@@ -221,6 +221,12 @@ https://github.com/vmware-tanzu/velero
    root@nginx-without-pv-7999c56fdc-54lrn:/#
    ```
 
+   `exit`コマンドでコンテナからbastionサーバのプロンプトに戻ります。
+
+   ```shell
+   root@nginx-without-pv-7999c56fdc-54lrn:/# exit
+   ```
+
 4. ステートレスサンプルアプリケーションの削除・再作成
 
    永続ボリュームを使用していないので、Pod削除時に作成したサンプルファイルが削除されることを確認します。
