@@ -201,7 +201,7 @@ https://github.com/vmware-tanzu/velero
 
    ```shell
    ls -l /var/log/nginx
-   echo "Test hogehoge" > /var/log/nginx/test.log
+   echo "Test hogehoge" >> /var/log/nginx/test.log
    ls -l /var/log/nginx
    ```
 
@@ -278,6 +278,13 @@ https://github.com/vmware-tanzu/velero
    root@nginx-without-pv-7999c56fdc-b7vl4:/#
    ```
 
+   `exit`コマンドでコンテナからbastionサーバのプロンプトに戻ります。
+   
+   ```shell
+   root@nginx-without-pv-7999c56fdc-b7vl4:/# exit
+   exit
+   ```
+   
    次に永続ボリュームを使用してデータが永続化されることを確認します。
 
 ### ステートフルサンプルアプリケーション作成
@@ -467,7 +474,7 @@ https://github.com/vmware-tanzu/velero
    再度、サンプルアプリケーションを作成します。
 
    ```shell
-    kubectl apply -f nginx-with-pv.yaml
+   kubectl apply -f nginx-with-pv.yaml
    ```
 
    PodがRunning状態になっていることを確認します。再作成したので異なる名前で作成されています。
@@ -621,7 +628,7 @@ Veleroで取得したバックアップデータの保存先オブジェクト�
      --provider aws \
      --bucket [Your User Name] \
      --labels user=[Your User Name] \
-     --config region=minio,s3ForcePathStyle=true,s3Url=http://192.168.10.26:9000
+     --config region=minio,s3ForcePathStyle=true,s3Url=http://192.168.10.189:9000
    ```
 
    本環境では事前に割り当てられたユーザ名と同名で`Minio`にバケットを作成しています。
@@ -637,7 +644,7 @@ Veleroで取得したバックアップデータの保存先オブジェクト�
        --provider aws \
        --bucket user20 \
        --labels user=user20 \
-       --config region=minio,s3ForcePathStyle=true,s3Url=http://192.168.10.26:9000
+       --config region=minio,s3ForcePathStyle=true,s3Url=http://192.168.10.189:9000
      ```
 
    以下のコマンドを実行し、`BackupStorageLocation`を確認します。
@@ -955,8 +962,10 @@ Veleroで取得したバックアップデータの保存先オブジェクト�
    バックアップ取得時点の状態にリストアできたことを確認できました。
    
    exitコマンドでbastionサーバのプロンプトに戻ります。
-   ```
+   
+   ```shell
    root@nginx-with-pv-7645b45685-dhr9g:/# exit
+   exit
    ```
 
 ### Velero スケジュールバックアップ実行
