@@ -201,7 +201,7 @@ https://github.com/vmware-tanzu/velero
 
    ```shell
    ls -l /var/log/nginx
-   echo "Test hogehoge" >> /var/log/nginx/test.log
+   echo "Test hogehoge" > /var/log/nginx/test.log
    ls -l /var/log/nginx
    ```
 
@@ -522,6 +522,18 @@ https://github.com/vmware-tanzu/velero
    ```
 
    永続ボリュームを使用してデータを永続化しているので、Podを再作成してもデータが削除されないことを確認できました。
+   
+   `exit`コマンドでシェルから抜けます。
+   
+   ```shell
+   exit
+   ```
+   
+   実行例
+   
+   ```shell
+   root@nginx-with-pv-56bf89776d-65w87:/# exit
+   ```
 
 ## ハンズオン②
 
