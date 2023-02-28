@@ -201,7 +201,7 @@ https://github.com/vmware-tanzu/velero
 
    ```shell
    ls -l /var/log/nginx
-   echo "Test hogehoge" > /var/log/nginx/test.log
+   echo "Test hogehoge" >> /var/log/nginx/test.log
    ls -l /var/log/nginx
    ```
 
