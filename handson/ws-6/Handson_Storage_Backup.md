@@ -28,6 +28,8 @@ Helmで導入する際に作成される`StorageClass`を使用します。
 
 ```shell
 kubectl get storageclass
+NAME         PROVISIONER                                     RECLAIMPOLICY   VOLUMEBINDINGMODE   ALLOWVOLUMEEXPANSION   AGE
+nfs-client   cluster.local/nfs-subdir-external-provisioner   Delete          Immediate           true                   21h
 ```
 
 ## Velero 概要
