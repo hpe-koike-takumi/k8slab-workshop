@@ -368,7 +368,7 @@
      name: sample-petclinic-ingress
    spec:
      rules:
-     - host: [Your username]-sample-petclinic.ext01.k8slabhpe.net
+     - host: [Your username]-sample-petclinic.test.k8slabhpe.net
        http:
          paths:
          - path: /
@@ -489,7 +489,7 @@
 
    ```shell
    NAME                       CLASS   HOSTS                                            ADDRESS                                        PORTS   AGE
-   sample-petclinic-ingress   nginx   [Your username]-sample-petclinic.ext01.k8slabhpe.net   192.168.20.156,192.168.20.211,192.168.20.217   80      53s
+   sample-petclinic-ingress   nginx   [Your username]-sample-petclinic.test.k8slabhpe.net   192.168.20.156,192.168.20.211,192.168.20.217   80      53s
    ```
 
    払い出されたホスト名（上記HOSTS）にブラウザからアクセスしてみます。
