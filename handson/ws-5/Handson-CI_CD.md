@@ -533,6 +533,7 @@ AppProjectでは主に以下のことを制限できます。
      name: tekton-petclinic-app
      labels:
        app: tekton-petclinic-app
+       owner: [Your User Name]
    spec:
      replicas: 1
      selector:
@@ -605,6 +606,15 @@ AppProjectでは主に以下のことを制限できます。
      （例）user18の場合
 
      ```yaml
+     apiVersion: apps/v1
+     kind: Deployment
+     metadata:
+     name: tekton-petclinic-app
+     labels:
+       app: tekton-petclinic-app
+       owner: user18
+     （中略）
+     ---
      apiVersion: networking.k8s.io/v1
      kind: Ingress
      metadata:
@@ -1776,6 +1786,7 @@ Github上でPushイベントが発生すると、Kubernetesクラスタに用意
      name: prod-tekton-petclinic-app
      labels:
        app: prod-tekton-petclinic-app
+       owner: [Your User Name]
    spec:
      replicas: 1
      selector:
@@ -1861,6 +1872,15 @@ Github上でPushイベントが発生すると、Kubernetesクラスタに用意
      （例）user18の場合
    
      ```yaml
+     apiVersion: apps/v1
+     kind: Deployment
+     metadata:
+       name: prod-tekton-petclinic-app
+       labels:
+         app: prod-tekton-petclinic-app
+         owner: user18
+     （中略）
+     ---
      apiVersion: networking.k8s.io/v1
      kind: Ingress
      metadata:
