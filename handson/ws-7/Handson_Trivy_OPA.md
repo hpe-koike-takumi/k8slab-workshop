@@ -871,7 +871,7 @@ OPA Gatekeeper によるマニフェスト適用時のポリシーチェック�
 
 本環境では、Deploymentリソースに特定のラベルを持つことを条件とします。
 
-OPA Gatekeeperでは、`ConstraintTemplate`と`Constraints`リソースを使用してポリシールールを作成します。
+OPA Gatekeeperでは、`ConstraintTemplate`と`Constraints`リソースを使用してポリシールールを作成します。（クラスタ管理者が適用します）
 
 ```yaml
 apiVersion: templates.gatekeeper.sh/v1
@@ -1042,5 +1042,13 @@ Deploymentリソースは特定のラベル`owner`を持つことを条件とし
    NAME                          READY   UP-TO-DATE   AVAILABLE   AGE     LABELS
    label-nginx                   1/1     1            1           74s     owner=user20
    ```
+
+## リソース削除
+
+最後に本ハンズオンで使用したリソースを削除します。
+
+```shell
+kubectl delete -f label-sample.yaml -f non-privileged-nginx.yaml -f sc-sample.yaml
+```
 
 以上で、本ハンズオンは終了です。
