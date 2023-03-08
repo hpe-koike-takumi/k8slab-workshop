@@ -871,7 +871,7 @@ OPA Gatekeeper によるマニフェスト適用時のポリシーチェック�
 
 本環境では、Deploymentリソースに特定のラベルを持つことを条件とします。
 
-OPA Gatekeeperでは、`ConstraintTemplate`と`Constraints`リソースを使用してポリシールールを作成します。（クラスタ管理者が適用します）
+OPA Gatekeeperでは、`ConstraintTemplate`と`Constraints`リソースを使用してポリシールールを作成します。（クラスタ管理者が適用します。ハンズオンで実施する必要はありません）
 
 ```yaml
 apiVersion: templates.gatekeeper.sh/v1
