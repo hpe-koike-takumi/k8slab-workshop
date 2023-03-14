@@ -504,15 +504,13 @@ https://github.com/istio/istio/tree/master/samples/bookinfo
    Podには、アプリケーション本体に加えてサイドカーコンテナが含まれることがわかります。以下のコマンドで各Podに含まれているコンテナイメージを確認します。
 
    ```shell
-   kubectl get pods -o jsonpath='{range .items[*]}{"\n"}{.metadata.name}{":\t"}{range .spec.containers[*]}{.image}{", "}{end}{end}{"\
-   n"}'
+   kubectl get pods -o jsonpath='{range .items[*]}{"\n"}{.metadata.name}{":\t"}{range .spec.containers[*]}{.image}{", "}{end}{end}{"\n"}'
    ```
 
    （実行例）
 
    ```shell
-   kubectl get pods -o jsonpath='{range .items[*]}{"\n"}{.metadata.name}{":\t"}{range .spec.containers[*]}{.image}{", "}{end}{end}{"\
-   n"}'
+   kubectl get pods -o jsonpath='{range .items[*]}{"\n"}{.metadata.name}{":\t"}{range .spec.containers[*]}{.image}{", "}{end}{end}{"\n"}'
    
    details-v1-6997d94bb9-pvjbn:    docker.io/istio/examples-bookinfo-details-v1:1.17.0, docker.io/istio/proxyv2:1.17.1,
    productpage-v1-d4f8dfd97-mlftd: docker.io/istio/examples-bookinfo-productpage-v1:1.17.0, docker.io/istio/proxyv2:1.17.1,
