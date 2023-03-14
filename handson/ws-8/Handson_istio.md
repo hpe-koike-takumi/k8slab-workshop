@@ -473,12 +473,11 @@ https://github.com/istio/istio/tree/master/samples/bookinfo
    ```
    
 2.  サンプルアプリケーションのデプロイ
+    以下のコマンドでサンプルアプリケーションをデプロイします。
 
-   以下のコマンドでサンプルアプリケーションをデプロイします。
-
-   ```shell
-   kubectl apply -f bookinfo.yaml
-   ```
+     ```shell
+     kubectl apply -f bookinfo.yaml
+     ```
 
 3. デプロイの確認
 
