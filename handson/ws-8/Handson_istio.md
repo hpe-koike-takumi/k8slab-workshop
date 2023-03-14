@@ -1062,7 +1062,7 @@ https://kubernetes.io/ja/docs/concepts/services-networking/service/#proxy-mode-i
 
    `reviews`v3サービスが受け取るトラフィックのうち一部が5xxエラーで返ってきていることがわかります。
 
-   また、`jason`ユーザでログインした状態の`bookinfo`アプリケーションに戻りましょう。`reviews`v3サービスにアクセスしている時は、「」と表示されていて、`ratings`サービスへのアクセスが失敗していることがわかります。
+   また、`jason`ユーザでログインした状態の`bookinfo`アプリケーションに戻りましょう。`reviews`v3サービスにアクセスしている時は、「Ratings service is currently unavailable」と表示されていて、`ratings`サービスへのアクセスが失敗していることがわかります。
 
    ![rating-fi-v3](assets/rating-fi-v3.png)
 
