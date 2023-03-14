@@ -701,7 +701,7 @@ https://github.com/istio/istio/tree/master/samples/bookinfo
    http://[Your User Name].istio.test.k8slabhpe.net/productpage
    ```
 
-   （実行例）user20の場合、「http://[Your User Name].istio.test.k8slabhpe.net/productpage」へアクセスします。
+   （実行例）user20の場合、「http://user20.istio.test.k8slabhpe.net/productpage」へアクセスします。
 
    ![access-bookinfo1](assets/access-bookinfo1.png)
 
@@ -800,7 +800,7 @@ https://github.com/istio/istio/tree/master/samples/bookinfo
 
 以上で、クラスタ外から`bookinfo`サンプルアプリケーションへアクセスすることができました。
 
-これまで使用したIstioのカスタムリソース（`VirtualService`、`Gateway`）では、Istio Ingress Gateway経由で`productpage`サービスのトラフィックルーティングを定義しています。その他の通信（たとえば、`productpage`->`reviews`）は、Kubernetes Service リソース経由で通信を行っています。ただし、Istioではすべての通信がサイドカーの`Envoy`でインターセプトされています。kialiで``productpage`->`reviews`のトラフィック状況が確認できるのは、それぞれの`Envoy`経由で通信を行っているためです。
+これまで使用したIstioのカスタムリソース（`VirtualService`、`Gateway`）では、Istio Ingress Gateway経由で`productpage`サービスのトラフィックルーティングを定義しています。その他の通信（たとえば、`productpage`->`reviews`）は、Kubernetes Service リソース経由で通信を行っています。ただし、Istioではすべての通信がサイドカーの`Envoy`でインターセプトされています。kialiで`productpage`->`reviews`のトラフィック状況が確認できるのは、それぞれの`Envoy`経由で通信を行っているためです。
 
 ハンズオンの次節では、更にIstioのカスタムリソース（`VirtualService`、`DestinationRule`）を使用し、トラフィック管理機能（トラフィック・シフティング、フォールト・インジェクション）を設定します。
 
@@ -922,7 +922,7 @@ https://kubernetes.io/ja/docs/concepts/services-networking/service/#proxy-mode-i
 
    ![traffic-dist](assets/traffic-dist.png)
 
-   サービス間津伸の割合が表示されます。`reviews`サービスの割合が大体同程度になることが確認できます。
+   サービス間通信の割合が表示されます。`reviews`サービスの割合が大体同程度になることが確認できます。
 
    ![reviews-v1v3-only2](assets/reviews-v1v3-only2.png)
 
