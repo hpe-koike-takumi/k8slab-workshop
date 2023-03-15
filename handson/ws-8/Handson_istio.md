@@ -778,15 +778,13 @@ https://github.com/istio/istio/tree/master/samples/bookinfo
 
    メインメニュー左側の「Graph」メニューを選択します。
 
-   「Select Namespaces」で「istio-system」と「Your User Name」（割り当てられたbastionサーバのユーザ名と同名）を選択します。
-
-   ![select-ns1](assets/select-ns1.png)
+   「Select Namespaces」で「Your User Name」（割り当てられたbastionサーバのユーザ名と同名）を選択します。
 
    user20の場合
 
    ![select-ns2](assets/select-ns2.png)
 
-   トラフィックを流しているので、`bookinfo`のサービスメッシュが表示されます。
+   テスト用スクリプトでトラフィックを流しているので、`bookinfo`のサービスメッシュが表示されます。
 
    ![mesh-overview1](assets/mesh-overview1.png)
 
